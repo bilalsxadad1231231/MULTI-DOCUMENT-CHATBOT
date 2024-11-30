@@ -1,7 +1,6 @@
 from fastapi import HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
 from datetime import datetime, timedelta
-import datetime
 import jwt
 
 

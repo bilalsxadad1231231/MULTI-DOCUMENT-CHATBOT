@@ -176,7 +176,7 @@ async def chat_with_chatbot(
 
         with get_db() as conn:
             chatbot = conn.execute("""
-                SELECT name, persona_prompt 
+                SELECT name, description, persona_prompt
                 FROM chatbots 
                 WHERE name = ? AND user_id = (SELECT id FROM users WHERE username = ?)
             """, (chatbot_str_id, username)).fetchone()
@@ -193,12 +193,12 @@ async def chat_with_chatbot(
         # Note: Replace with your actual Hugging Face API key
         embedding_model = HuggingFaceInferenceAPIEmbeddings(
             model_name="sentence-transformers/all-MiniLM-L6-v2", 
-            api_key="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"
+            api_key="Your hugging face access token"
         )
         
         llm = HuggingFaceHub(
             repo_id="Qwen/Qwen2.5-Coder-32B-Instruct",
-            huggingfacehub_api_token = "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",
+            huggingfacehub_api_token = "Your hugging face access token",
             model_kwargs={"temperature": 0.7, "max_length": 1000}
         )
         
@@ -207,21 +207,26 @@ async def chat_with_chatbot(
         
         
         # Custom prompt template to incorporate persona and context
+# Custom prompt template to incorporate chatbot name, description, persona, and context
         prompt_template = PromptTemplate(
             input_variables=["chat_history", "question", "context"],
-            template="""Persona: {persona_prompt}
+            template="""You are {chatbot_name}, {chatbot_description}
 
-Context Documents:
-{context}
+My Persona: {persona_prompt}
 
-Chat History:
-{chat_history}
+Context Documents: {context}
+
+Chat History: {chat_history}
 
 User Question: {question}
-Provide a helpful, contextually relevant, and persona-consistent response:""",
-        
-        partial_variables={"persona_prompt": chatbot['persona_prompt']}   
-        )
+
+Respond as {chatbot_name}, providing a helpful, contextually relevant response that reflects my unique personality and knowledge:""",
+    partial_variables={
+        "chatbot_name": chatbot['name'],
+        "chatbot_description": chatbot['description'],
+        "persona_prompt": chatbot['persona_prompt']
+    }
+)
         # Create Conversational Retrieval Chain
         conversation_chain = ConversationalRetrievalChain.from_llm(
             llm=llm,
