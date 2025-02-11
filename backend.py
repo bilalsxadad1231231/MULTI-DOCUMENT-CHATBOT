@@ -1,9 +1,7 @@
 from fastapi import FastAPI, HTTPException, File, UploadFile, Form, Depends, Request
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-import huggingface_hub
 from chat_client import GroqLLM
 from langchain.chains import ConversationalRetrievalChain
-from langchain_community.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 from passlib.context import CryptContext
 import shutil
