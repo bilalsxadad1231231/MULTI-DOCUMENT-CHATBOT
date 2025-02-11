@@ -5,8 +5,9 @@ from langchain.document_loaders import TextLoader, PDFMinerLoader
 from langchain.vectorstores import FAISS  # Use FAISS instead of Chroma
 import os
 from huggingface_hub import login
-login(token="YOUR HUGGING FACE API HERE")
 
+hf_token = os.getenv('HUGGING_FACE_TOKEN')
+login(token=hf_token)
 
 class DocumentProcessor:
     def __init__(self):
