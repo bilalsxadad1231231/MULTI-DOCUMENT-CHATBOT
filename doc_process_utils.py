@@ -6,8 +6,7 @@ from langchain_community.vectorstores import FAISS  # Use FAISS instead of Chrom
 import os
 from huggingface_hub import login
 
-hf_token = os.getenv('HUGGING_FACE_TOKEN')
-login(token=hf_token)
+login(token="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")
 
 class DocumentProcessor:
     def __init__(self):
