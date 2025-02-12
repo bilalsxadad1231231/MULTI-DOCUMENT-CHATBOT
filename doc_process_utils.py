@@ -1,8 +1,8 @@
 from langchain.text_splitter import CharacterTextSplitter
 from fastapi import HTTPException
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain.document_loaders import TextLoader, PDFMinerLoader
-from langchain.vectorstores import FAISS  # Use FAISS instead of Chroma
+from langchain_community.document_loaders import TextLoader, PDFMinerLoader
+from langchain_community.vectorstores import FAISS  # Use FAISS instead of Chroma
 import os
 from huggingface_hub import login
 
