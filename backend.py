@@ -190,7 +190,7 @@ async def chat_with_chatbot(
         # Note: Replace with your actual Hugging Face API key
         
         llm = GroqLLM(
-            groq_api_key="",
+            groq_api_key="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",
             model_name="llama-3.3-70b-versatile"  # You can adjust the model as needed
         )
         
