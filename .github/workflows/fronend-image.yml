@@ -1,29 +1,35 @@
-name: CI/CD Pipeline for Streamlit App
+name: Frontend CI/CD Pipeline
 on:
   push:
     branches:
       - main
     paths:
-      - 'frontent/**'  # Only trigger on changes to frontend folder
-      - '.github/workflows/fronend-image.yml'
+      - 'frontend/**'
 
 env:
   AWS_REGION: "us-east-1"
   AWS_ACCOUNT_ID: "940482422254"
-  REPO_NAME: "bilalawspractice/first-chatbot-app-frontend"
-  CLUSTER_NAME: "fronntendCluster"
-  SERVICE_NAME: "frontend-service"
+  REPO_NAME: "bilalawspractice/first-chatbot-app"
+  CLUSTER_NAME: "backendCluster"
+  SERVICE_NAME: "backend-service"
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend  # Set default working directory to frontend
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    # Debug step to check repository structure
+    - name: Debug - List repository contents
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "\nRepository contents:"
+        ls -la
+        echo "\nChecking for frontend directory:"
+        ls -la frontend || echo "Frontend directory not found"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -33,12 +39,13 @@ jobs:
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Login to Amazon ECR
-      id: login-ecr
       run: |
+        cd frontend
         aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
     - name: Build the Docker image
       run: |
+        cd frontend
         docker build -t $REPO_NAME .
 
     - name: Tag the Docker image
