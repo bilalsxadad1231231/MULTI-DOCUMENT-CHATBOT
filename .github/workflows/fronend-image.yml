@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - 'frontend/**'  # Only trigger on changes to frontend folder
+      - '.github/workflows/frontend-image.yml'
 
 env:
   AWS_REGION: "us-east-1"
