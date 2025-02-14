@@ -10,7 +10,7 @@ env:
   AWS_REGION: "us-east-1"
   AWS_ACCOUNT_ID: "940482422254"
   REPO_NAME: "bilalawspractice/first-chatbot-app-frontend"
-  CLUSTER_NAME: "frontendCluster"
+  CLUSTER_NAME: "fronntendCluster"
   SERVICE_NAME: "frontend-service"
 
 jobs:
