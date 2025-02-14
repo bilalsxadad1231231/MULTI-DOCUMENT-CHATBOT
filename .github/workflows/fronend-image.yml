@@ -4,7 +4,7 @@ on:
     branches:
       - main
     paths:
-      - 'frontend/**'  # Only trigger on changes to frontend folder
+      - 'frontent/**'  # Only trigger on changes to frontend folder
       - '.github/workflows/fronend-image.yml'
 
 env:
