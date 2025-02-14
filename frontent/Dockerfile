@@ -15,5 +15,5 @@ COPY . .
 # Expose Streamlit port
 EXPOSE 8501
 
-# Command to run the app
+# Command to run the application
 CMD ["streamlit", "run", "app.py"]
