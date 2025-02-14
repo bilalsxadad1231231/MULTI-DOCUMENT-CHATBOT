@@ -29,7 +29,7 @@ jobs:
         echo "\nRepository contents:"
         ls -la
         echo "\nChecking for frontend directory:"
-        ls -la frontend || echo "Frontend directory not found"
+        ls -la frontent || echo "Frontend directory not found"
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -40,12 +40,12 @@ jobs:
 
     - name: Login to Amazon ECR
       run: |
-        cd frontend
+        cd frontent
         aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
     - name: Build the Docker image
       run: |
-        cd frontend
+        cd frontent
         docker build -t $REPO_NAME .
 
     - name: Tag the Docker image
