@@ -1,6 +1,6 @@
 # Multi-Document Chatbot
 
-!(https://github.com/bilalsxadad1231231/MULTI-DOCUMENT-CHATBOT/blob/main/assets/chat%20app%20image.jpg)
+![chat_app](https://github.com/bilalsxadad1231231/MULTI-DOCUMENT-CHATBOT/blob/main/assets/chat%20app%20image.jpg)
 
 ![CI/CD Pipeline Completion](/assets/ci cd.jpg)
 
