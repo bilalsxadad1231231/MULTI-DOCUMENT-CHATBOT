@@ -2,7 +2,7 @@
 
 ![chat_app](https://github.com/bilalsxadad1231231/MULTI-DOCUMENT-CHATBOT/blob/main/assets/chat%20app%20image.jpg)
 
-![CI/CD Pipeline Completion](https://github.com/bilalsxadad1231231/MULTI-DOCUMENT-CHATBOT/blob/main/assets/ci cd.jpg)
+![CI/CD Pipeline Completion](https://github.com/bilalsxadad1231231/MULTI-DOCUMENT-CHATBOT/blob/main/assets/ci%20cd.jpg)
 
 ## Overview
 
