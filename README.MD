@@ -169,9 +169,7 @@ The backend consists of several utility modules:
 The Streamlit frontend provides:
 - Document upload interface
 - Interactive chat window
-- Document visualization
 - Response history tracking
-- User settings management
 
 ## Troubleshooting
 
